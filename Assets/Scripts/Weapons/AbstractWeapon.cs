@@ -7,5 +7,6 @@ public abstract class AbstractWeapon: MonoBehaviour
     [SerializeField] public CharacterWeaponController owner;
     public abstract void StartShooting();
     public abstract void StopShooting();
+    public abstract void Reload();
     public abstract void Initialize(CharacterWeaponController character);
 }

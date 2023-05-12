@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // Контроль
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController : MonoBehaviour
+public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField] private float characterSpeed;
     [SerializeField] private float knockInertiaSet = 20;

@@ -11,7 +11,7 @@ public class BaseWeapon: AbstractWeapon
 
     [SerializeField] private Transform bulletSpawner;
     [SerializeField] private uint _maxBulletCount;
-    private uint _bulletCount;
+    [SerializeField] private uint _bulletCount;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float text;
     [SerializeField] [Min(-1)] private int bulletSeries = -1;
@@ -19,15 +19,37 @@ public class BaseWeapon: AbstractWeapon
     [SerializeField] [Min(1)] private uint bulletCountAtOnce = 1;
     [SerializeField] [Min(0.0f)] private float shootTime;
     [SerializeField] [Min(0.0f)] private float angleScatter;
+    [SerializeField] [Min(0.0f)] private float recoilTime;
     [SerializeField] private Vector2 bulletSpeedRange;
     private Coroutine shootCoroutine;
+    private bool isHeld = false;
     public override void StartShooting()
     {
-        shootCoroutine = StartCoroutine(ShootCoroutine());
+        if (currentState == WeaponState.Idle)
+        {
+            currentState = WeaponState.Shooting;
+            shootCoroutine = StartCoroutine(ShootCoroutine());
+        }
+        isHeld = true;
     }
     public override void StopShooting()
     {
-        StopCoroutine(shootCoroutine);
+        if (currentState == WeaponState.Shooting && shootCoroutine != null)
+        {
+            StopCoroutine(shootCoroutine);
+            shootCoroutine = null;
+            Invoke("SetIdleState", recoilTime);
+        }
+        isHeld = false;
+    }
+    public void SetIdleState()
+    {
+        currentState = WeaponState.Idle;
+        if (isHeld) StartShooting();
+    }
+    public override void Reload()
+    {
+        StartCoroutine(ReloadCoroutine());
     }
     public override void Initialize(CharacterWeaponController character)
     {
@@ -40,34 +62,39 @@ public class BaseWeapon: AbstractWeapon
         bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-angleScatter, angleScatter)));
         float speed = Random.Range(bulletSpeedRange.x, bulletSpeedRange.y);
         Vector2 velocity = bullet.transform.right * speed;
-
+        bullet.GetComponent<Rigidbody2D>().velocity = velocity;
+        bullet.GetComponent<BaseBullet>().SetBulletOwner(owner.gameObject);
     }
     IEnumerator ShootCoroutine()
     {
         uint i = 0;
         while (bulletCount > 0)
         {
-            yield return new WaitForSeconds(shootTime);
+            if (currentState != WeaponState.Shooting) break;
             for (uint j = 0; j < bulletCountAtOnce; j++)
             {
                 ShootOneBullet();
             }
             bulletCount--;
             owner.UpdateUI();
+            yield return new WaitForSeconds(shootTime);
             if (bulletSeries > 0)
             {
                 i++;
                 if (i > bulletSeries) break;
             }
         }
+        currentState = WeaponState.Idle;
     }
-    IEnumerator Reload()
+    IEnumerator ReloadCoroutine()
     {
         if (currentState == WeaponState.Idle)
         {
             currentState = WeaponState.Reloading;
             yield return new WaitForSeconds(reloadAllBulletsTime);
             bulletCount = maxBulletCount;
+            owner.UpdateUI();
+            currentState = WeaponState.Idle;
         }
     }
     
