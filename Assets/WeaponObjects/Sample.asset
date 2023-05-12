@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizedName: samp
   weaponPrefab: {fileID: 8141654510769799758, guid: 8f4634d00e34c2b4abe8dcea0b5160dd, type: 3}
-  weaponUIPatronDisplay: {fileID: 0}
+  weaponUIPatronDisplay: {fileID: 155727288494633519, guid: d2086fb7ffae9eb41ad0785723db8b43, type: 3}

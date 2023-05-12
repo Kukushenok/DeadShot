@@ -5,18 +5,18 @@ using UnityEngine;
 public class BaseWeapon: AbstractWeapon
 {
     public enum WeaponState { Idle, Reloading, Shooting };
-    public uint bulletCount { get { return _bulletCount; } private set { _bulletCount = value; } }
-    public uint maxBulletCount { get { return _maxBulletCount; } private set { _maxBulletCount = value; } }
+    public int bulletCount { get { return _bulletCount; } private set { _bulletCount = value; } }
+    public int maxBulletCount { get { return _maxBulletCount; } private set { _maxBulletCount = value; } }
     public WeaponState currentState { get; private set; }
 
     [SerializeField] private Transform bulletSpawner;
-    [SerializeField] private uint _maxBulletCount;
-    [SerializeField] private uint _bulletCount;
+    [SerializeField] private int _maxBulletCount;
+    [SerializeField] private int _bulletCount;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float text;
     [SerializeField] [Min(-1)] private int bulletSeries = -1;
     [SerializeField] [Min(0.0f)] private float reloadAllBulletsTime;
-    [SerializeField] [Min(1)] private uint bulletCountAtOnce = 1;
+    [SerializeField] [Min(1)] private int bulletCountAtOnce = 1;
     [SerializeField] [Min(0.0f)] private float shootTime;
     [SerializeField] [Min(0.0f)] private float angleScatter;
     [SerializeField] [Min(0.0f)] private float recoilTime;
@@ -27,6 +27,11 @@ public class BaseWeapon: AbstractWeapon
     {
         if (currentState == WeaponState.Idle)
         {
+            if (bulletCount == 0)
+            {
+                Reload();
+                return;
+            }
             currentState = WeaponState.Shooting;
             shootCoroutine = StartCoroutine(ShootCoroutine());
         }
