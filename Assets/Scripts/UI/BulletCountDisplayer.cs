@@ -7,6 +7,7 @@ namespace Game.UI
     {
         public static BulletCountDisplayer singleton { get; private set; }
         [SerializeField] private Transform bulletDisplaysParent;
+        [SerializeField] private float bulletInitTime;
         private GameObject lastPatronDisplay;
         private List<OneBulletDisplay> allDisplays = new List<OneBulletDisplay>();
         public void Start()
@@ -62,8 +63,11 @@ namespace Game.UI
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject display = Instantiate(prefab, bulletDisplaysParent);
-                allDisplays.Add(display.GetComponent<OneBulletDisplay>());
+                GameObject instance = Instantiate(prefab, bulletDisplaysParent);
+                instance.SetActive(false);
+                OneBulletDisplay display = instance.GetComponent<OneBulletDisplay>();
+                display.Initialize(this, i * bulletInitTime / count);
+                allDisplays.Add(display);
             }
         }
     }
