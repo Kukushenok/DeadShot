@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Health))]
 public class GhostEnemy : InertiaMovementController
 {
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private float baseDamage;
     [SerializeField] private float punchForce;
+    [SerializeField] private float minOpacity;
+     
+    [SerializeField] private SpriteRenderer spriteRenderer;
     Vector3 enemyPosition { get
         {
             if (Character.singleton == null) return transform.position;
             return Character.singleton.transform.position;
         }
+    }
+    private Health healthComponent;
+    protected override void Awake()
+    {
+        base.Awake();
+        healthComponent = GetComponent<Health>();
+        healthComponent.OnHPChanged.AddListener(OnChangeHP);
     }
     private void FixedUpdate()
     {
@@ -29,8 +39,17 @@ public class GhostEnemy : InertiaMovementController
             KnockMeTowards(-direction.normalized * punchForce);
         }
     }
+    public void OnChangeHP(float hp)
+    {
+        Color currColor = spriteRenderer.color;
+        float range = (1 - minOpacity / 255);
+        range *= hp / healthComponent.maxHP;
+        currColor.a = minOpacity / 255 + range;
+        spriteRenderer.color = currColor;
+    }
     public void OnDeath()
     {
+        Destroy(gameObject);
         Instantiate(deathParticles, transform.position, transform.rotation);
     }
 }

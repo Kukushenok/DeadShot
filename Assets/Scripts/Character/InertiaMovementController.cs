@@ -13,7 +13,7 @@ public class InertiaMovementController : MonoBehaviour
     protected Vector2 velocityChange;
 
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
     }
