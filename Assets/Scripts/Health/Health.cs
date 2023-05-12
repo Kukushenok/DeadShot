@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public float HP { get { return _HP; } }
     public float maxHP { get { return _maxHP; } }
     public bool isDead { get { return _HP <= 0; } }
-    public UnityEvent<float> OnHPChanged;
+    public UnityEvent<float, float> OnHPChanged;
     public UnityEvent OnDeath;
 
     [SerializeField] float _HP;
@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
         {
             bool wasDead = healthComponent.isDead;
             healthComponent._HP += delta;
-            healthComponent.OnHPChanged.Invoke(healthComponent._HP);
+            healthComponent.OnHPChanged.Invoke(healthComponent._HP, healthComponent._maxHP);
             if(healthComponent.isDead && !wasDead)
             {
                 healthComponent.OnDeath.Invoke();

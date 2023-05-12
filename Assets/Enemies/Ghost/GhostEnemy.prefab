@@ -54,10 +54,11 @@ MonoBehaviour:
   knockInertiaDecreaseSpeed: 20
   minimumInertia: 0
   deathParticles: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
+  donutPrefab: {fileID: 8468475232868679955, guid: 0650d0eb1bcffc84b9a6de53cebe4a01, type: 3}
+  donutDropPercentrage: 1
   baseDamage: 1
   punchForce: 8
   minOpacity: 128
-  healthComponent: {fileID: 88340078395064024}
   spriteRenderer: {fileID: 2618935501402913671}
 --- !u!50 &2618935499509692171
 Rigidbody2D:

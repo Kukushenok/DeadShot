@@ -5,6 +5,8 @@ using UnityEngine;
 public class GhostEnemy : InertiaMovementController
 {
     [SerializeField] private GameObject deathParticles;
+    [SerializeField] private GameObject donutPrefab;
+    [SerializeField] private float donutDropPercentrage;
     [SerializeField] private float baseDamage;
     [SerializeField] private float punchForce;
     [SerializeField] private float minOpacity;
@@ -39,17 +41,21 @@ public class GhostEnemy : InertiaMovementController
             KnockMeTowards(-direction.normalized * punchForce);
         }
     }
-    public void OnChangeHP(float hp)
+    public void OnChangeHP(float hp, float maxHP)
     {
         Color currColor = spriteRenderer.color;
         float range = (1 - minOpacity / 255);
-        range *= hp / healthComponent.maxHP;
+        range *= hp / maxHP;
         currColor.a = minOpacity / 255 + range;
         spriteRenderer.color = currColor;
     }
     public void OnDeath()
     {
         Destroy(gameObject);
+        if (Random.Range(0, 1) <= donutDropPercentrage)
+        {
+            Instantiate(donutPrefab, transform.position, Quaternion.identity);
+        }
         Instantiate(deathParticles, transform.position, transform.rotation);
     }
 }

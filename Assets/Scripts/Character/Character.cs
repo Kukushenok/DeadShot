@@ -2,7 +2,7 @@ using Game.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
     public static Character singleton { get; private set; }
