@@ -6,7 +6,6 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private float characterSpeed;
-    [SerializeField] private float text;
     [SerializeField] private float knockInertiaSet = 20;
     private float inertia = 0;
     public bool turnedLeft { get; private set; }
@@ -29,6 +28,10 @@ public class CharacterController : MonoBehaviour
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (direction.magnitude > 1) direction.Normalize();
         direction *= characterSpeed;
+        if (direction.x > float.Epsilon)
+        {
+            turnedLeft = direction.x > 0;
+        }
         Vector2 newVelocity = Vector2.SmoothDamp(rg.velocity, direction, ref velocityChange, Time.fixedDeltaTime * inertia);
         rg.velocity = newVelocity;
     }

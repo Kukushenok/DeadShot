@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharacterWeaponController : MonoBehaviour
 {
     [SerializeField] private Transform weaponDisplay;
-    [SerializeField] private AbstractWeapon currentWeaponInstance;
+    [SerializeField] private BaseWeapon currentWeaponInstance;
+    //UI
     public void SetWeaponToMe(WeaponScriptableObject weaponToSet)
     {
         if (currentWeaponInstance != null)
@@ -13,6 +14,10 @@ public class CharacterWeaponController : MonoBehaviour
             Destroy(currentWeaponInstance.gameObject);
         }
         GameObject weaponObject = Instantiate(weaponToSet.weaponPrefab, weaponDisplay);
-        currentWeaponInstance = weaponObject.GetComponent<AbstractWeapon>();
+        currentWeaponInstance = weaponObject.GetComponent<BaseWeapon>();
+    }
+    public void UpdateUI()
+    {
+
     }
 }
