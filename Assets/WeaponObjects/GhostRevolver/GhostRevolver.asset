@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70c94a3d5df4eb40807f677a746e358, type: 3}
+  m_Name: GhostRevolver
+  m_EditorClassIdentifier: 
+  localizedName: GhostRevolver
+  weaponPrefab: {fileID: 5875721556255520760, guid: 9e662a289fde1b249a1395a67727b7db, type: 3}
+  weaponUIPatronDisplay: {fileID: 155727288494633519, guid: d2086fb7ffae9eb41ad0785723db8b43, type: 3}

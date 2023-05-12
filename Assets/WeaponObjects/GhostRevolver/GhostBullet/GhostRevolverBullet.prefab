@@ -174,10 +174,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.05
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -195,9 +195,9 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.41176474, g: 0.2509804, b: 0.06666667, a: 0.39215687}
+      key1: {r: 0.25882354, g: 0.2784314, b: 0.29803923, a: 0.19607843}
+      key2: {r: 0, g: 0, b: 0, a: 0.19607843}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -213,7 +213,7 @@ TrailRenderer:
       ctime7: 0
       atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 4696360454505779120}
   - component: {fileID: 4696360454505779123}
   m_Layer: 3
-  m_Name: bullet
+  m_Name: GhostRevolverBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   lifetime: 5
   owner: {fileID: 0}
   baseDamage: 1
+  punchForce: 2
 --- !u!50 &4696360454505779120
 Rigidbody2D:
   serializedVersion: 4

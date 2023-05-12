@@ -54,7 +54,7 @@ namespace Game.UI
             int endIndex = allDisplays.Count - 1 - count;
             for (int i = allDisplays.Count - 1; i > endIndex; i--)
             {
-                allDisplays[i].transform.parent = transform.parent;
+                allDisplays[i].transform.SetParent(transform.parent, true);
                 allDisplays[i].PunchOut();
                 allDisplays.RemoveAt(i);
             }
