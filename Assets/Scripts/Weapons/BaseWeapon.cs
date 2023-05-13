@@ -63,16 +63,17 @@ public class BaseWeapon: AbstractWeapon
     }
     public override void Reload()
     {
-        if (currentState == WeaponState.Idle)
+        if (currentState == WeaponState.Idle && maxBulletCount != bulletCount)
         {
             currentState = WeaponState.Reloading;
             StartCoroutine(ReloadCoroutine());
         }
     }
-    public override void Initialize(CharacterWeaponController character)
+    public override void Initialize(WeaponController character)
     {
         owner = character;
         bulletCount = maxBulletCount;
+        character.UpdateUI();
     }
     private void ShootOneBullet()
     {
@@ -107,8 +108,6 @@ public class BaseWeapon: AbstractWeapon
     }
     IEnumerator ReloadCoroutine()
     {
-
-
         weaponAnimator.Play(RELOAD_ANIM_KEY);
         yield return new WaitForSeconds(reloadAllBulletsTime);
         bulletCount = maxBulletCount;

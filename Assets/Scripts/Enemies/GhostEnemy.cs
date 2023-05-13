@@ -5,24 +5,24 @@ using UnityEngine;
 [RequireComponent(typeof(TeamParticipant))]
 public class GhostEnemy : InertiaMovementController
 {
-    [SerializeField] private GameObject deathParticles;
-    [SerializeField] private GameObject donutPrefab;
-    [SerializeField] private float donutDropPercentrage;
-    [SerializeField] private float baseDamage;
-    [SerializeField] private float punchForce;
-    [SerializeField] private float minOpacity;
-    [SerializeField] private float maxSeeingRange = 5;
+    [SerializeField] protected GameObject deathParticlesPrefab;
+    [SerializeField] protected GameObject donutPrefab;
+    [SerializeField] protected float donutDropPercentrage;
+    [SerializeField] protected float baseDamage;
+    [SerializeField] protected float punchForce;
+    [SerializeField] protected float minOpacity;
+    [SerializeField] protected float maxSeeingRange = 5;
      
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    Vector3 enemyPosition { get
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    protected Vector3 enemyPosition { get
         {
             TeamParticipant player = TeamManager.GetPlayer(transform.position, maxSeeingRange);
             if (!player) return transform.position;
             return player.transform.position;
         }
     }
-    private Health healthComponent;
-    private TeamParticipant teamParticipant;
+    protected Health healthComponent;
+    protected TeamParticipant teamParticipant;
     protected override void Awake()
     {
         base.Awake();
@@ -31,19 +31,20 @@ public class GhostEnemy : InertiaMovementController
         teamParticipant = GetComponent<TeamParticipant>();
         TeamManager.singleton.enemyTeam.AssignToTeam(teamParticipant);
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Vector3 direction = enemyPosition - transform.position;
         MakeInertiaMoveTowards(direction);
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Character.singleton == null) return;
-        if (collision.gameObject == Character.singleton.gameObject)
+        TeamParticipant participant = collision.gameObject.GetComponent<TeamParticipant>();
+        if (participant == null) return;
+        if (participant.currentTeam != teamParticipant.currentTeam)
         {
-            Vector3 direction = enemyPosition - transform.position;
+            Vector3 direction = collision.transform.position - transform.position;
             Health.Damage(collision.gameObject, baseDamage);
-            InertiaMovementController.Punch(collision.gameObject, direction.normalized * punchForce);
+            Punch(collision.gameObject, direction.normalized * punchForce);
             KnockMeTowards(-direction.normalized * punchForce);
         }
     }
@@ -62,6 +63,6 @@ public class GhostEnemy : InertiaMovementController
         {
             Instantiate(donutPrefab, transform.position, Quaternion.identity);
         }
-        Instantiate(deathParticles, transform.position, transform.rotation);
+        Instantiate(deathParticlesPrefab, transform.position, transform.rotation);
     }
 }

@@ -681,7 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec4ebe48e157514d90a5b1a54b942da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostEnemyPrefab: {fileID: 2618935499509692174, guid: 6362c52a55bc6564da2962ca69c3d22f, type: 3}
+  gameloopManager: {fileID: 590756363}
+  ghostEnemyPrefab: {fileID: 1156844793825999358, guid: 761380604325eab47a3437526ea51fc1, type: 3}
   spawnParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
   maxGhostEnemiesCount: 4
 --- !u!114 &590756363
@@ -701,7 +702,6 @@ MonoBehaviour:
   - {fileID: 7047504027784612344, guid: e8b6b8d0d0aed174391f614053c7ae15, type: 3}
   lurkingCamera: {fileID: 519420030}
   enemySpawner: {fileID: 590756362}
-  currentLevelInstance: {fileID: 0}
 --- !u!4 &590756364
 Transform:
   m_ObjectHideFlags: 0

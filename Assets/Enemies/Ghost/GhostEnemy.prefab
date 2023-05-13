@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2618935499509692277}
   - component: {fileID: 2618935499509692170}
   - component: {fileID: 88340078395064024}
-  - component: {fileID: 3026020620203783128}
   - component: {fileID: 8790447982037141629}
   m_Layer: 0
   m_Name: GhostEnemy
@@ -55,7 +54,7 @@ MonoBehaviour:
   knockInertiaSet: 20
   knockInertiaDecreaseSpeed: 20
   minimumInertia: 0
-  deathParticles: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
+  deathParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
   donutPrefab: {fileID: 8468475232868679955, guid: 0650d0eb1bcffc84b9a6de53cebe4a01, type: 3}
   donutDropPercentrage: 1
   baseDamage: 1
@@ -148,18 +147,6 @@ MonoBehaviour:
         m_CallState: 2
   _HP: 3
   _maxHP: 3
---- !u!114 &3026020620203783128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2618935499509692174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1fee3918bd5f847910aee8880afec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8790447982037141629
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class AbstractWeapon: MonoBehaviour 
 {
-    [SerializeField] public CharacterWeaponController owner;
+    [SerializeField] public WeaponController owner;
     public abstract void StartShooting();
     public abstract void StopShooting();
     public abstract void Reload();
-    public abstract void Initialize(CharacterWeaponController character);
+    public abstract void Initialize(WeaponController character);
 }

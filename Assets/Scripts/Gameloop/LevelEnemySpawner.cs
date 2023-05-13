@@ -6,6 +6,7 @@ public class LevelEnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameloopManager gameloopManager;
     [SerializeField] private GameObject ghostEnemyPrefab;
+    [SerializeField] private GameObject ghostEnemyWithWeaponPrefab;
     [SerializeField] private GameObject spawnParticlesPrefab;
     [SerializeField] private int maxGhostEnemiesCount;
     

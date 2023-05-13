@@ -20,7 +20,7 @@ public class BaseBullet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.isTrigger) return;
-        if (!friendlyFire)
+        if (!friendlyFire && owner != null)
         {
             if (TeamManager.IsInTheSameTeam(collision.gameObject, owner)) return;
         }
