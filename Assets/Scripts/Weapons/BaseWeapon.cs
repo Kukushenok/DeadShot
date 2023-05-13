@@ -16,6 +16,7 @@ public class BaseWeapon: AbstractWeapon
     [SerializeField] private int _bulletCount;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Animator weaponAnimator;
+    [SerializeField] private WeaponAudioManager audioManager;
     [Header("Weapon shoot parameters:")]
     [Tooltip("Max shot count at one serie")]
     [SerializeField] [Min(-1)] private int shotSeries = -1;
@@ -91,6 +92,7 @@ public class BaseWeapon: AbstractWeapon
         {
             if (currentState != WeaponState.Shooting) break;
             weaponAnimator.Play(SHOOT_ANIM_KEY);
+            audioManager.PlayShotSound();
             for (int j = 0; j < shotBulletCount; j++)
             {
                 ShootOneBullet();
@@ -108,6 +110,7 @@ public class BaseWeapon: AbstractWeapon
     }
     IEnumerator ReloadCoroutine()
     {
+        audioManager.PlayReloadSound();
         weaponAnimator.Play(RELOAD_ANIM_KEY);
         yield return new WaitForSeconds(reloadAllBulletsTime);
         bulletCount = maxBulletCount;

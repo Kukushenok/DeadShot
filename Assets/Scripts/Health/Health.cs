@@ -36,5 +36,10 @@ public class Health : MonoBehaviour
             }
         }
     }
+    public static void Heal(Health hp)
+    {
+        hp._HP = hp._maxHP;
+        hp.OnHPChanged.Invoke(hp._HP, hp._maxHP);
+    }
 
 }

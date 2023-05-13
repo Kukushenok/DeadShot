@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameloopManager: {fileID: 590756363}
-  ghostEnemyPrefab: {fileID: 2618935499509692174, guid: 6362c52a55bc6564da2962ca69c3d22f, type: 3}
+  ghostEnemyPrefab: {fileID: 1156844793825999358, guid: 761380604325eab47a3437526ea51fc1, type: 3}
   ghostEnemyWithWeaponPrefab: {fileID: 0}
   spawnParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
   maxGhostEnemiesCount: 4
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDisplayTransform: {fileID: 191054549}
-  weaponDefault: {fileID: 11400000, guid: 8740b39c9b0174549b73554b4da8fda3, type: 2}
+  weaponDefault: {fileID: 11400000, guid: c1d9015db8d153d468ce6a2a908134f8, type: 2}
 --- !u!58 &1542399604
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1799,8 +1799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c890653cfef0f74cbaf110ff1de50f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1542399599}
-  weaponController: {fileID: 1542399603}
+  _controller: {fileID: 1542399599}
+  _weaponController: {fileID: 1542399603}
+  _myHP: {fileID: 1542399606}
 --- !u!114 &1542399606
 MonoBehaviour:
   m_ObjectHideFlags: 0

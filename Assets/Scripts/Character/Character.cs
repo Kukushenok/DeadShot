@@ -5,8 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
-    public CharacterMovementController controller;
-    public CharacterWeaponController weaponController;
+    public CharacterMovementController controller { get => _controller; }
+    public CharacterWeaponController weaponController { get => _weaponController; }
+    public Health myHP { get => _myHP; }
+    [SerializeField] private CharacterMovementController _controller;
+    [SerializeField] private CharacterWeaponController _weaponController;
+    [SerializeField] private Health _myHP;
     // Start is called before the first frame update
     public void Start()
     {
@@ -15,9 +19,4 @@ public class Character : MonoBehaviour
         //    singleton = this;
         //}
     }
-    //public static void AssignWeaponToCharater(WeaponDescription weaponObject)
-    //{
-    //    if (singleton == null) return;
-    //    singleton.weaponController.SetWeaponToMe(weaponObject);
-    //}
 }

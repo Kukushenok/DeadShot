@@ -167,7 +167,7 @@ MonoBehaviour:
   minOpacity: 128
   maxSeeingRange: 15
   spriteRenderer: {fileID: 1156844791999952247}
-  weaponDescription: {fileID: 11400000, guid: 8740b39c9b0174549b73554b4da8fda3, type: 2}
+  weaponDescription: {fileID: 11400000, guid: c1d9015db8d153d468ce6a2a908134f8, type: 2}
 --- !u!50 &1156844793825999355
 Rigidbody2D:
   serializedVersion: 4

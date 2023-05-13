@@ -13,6 +13,7 @@ public class DonutInstance : MonoBehaviour
     {
         Invoke("StartRemoving", removingTime - REMOVE_ANIM_TIME);
         lightSource.SetActive(GameloopManager.singleton.currentScore < GameloopManager.singleton.maxLevelScore);
+        GameloopManager.singleton.currentLevelInstance.AddObjectToLevel(gameObject);
     }
     private void StartRemoving()
     {

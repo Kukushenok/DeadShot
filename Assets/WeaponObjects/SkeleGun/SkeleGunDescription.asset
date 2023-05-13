@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70c94a3d5df4eb40807f677a746e358, type: 3}
+  m_Name: SkeleGunDescription
+  m_EditorClassIdentifier: 
+  localizedName: ad
+  weaponPrefab: {fileID: 856177385836554680, guid: fdd2cefa7da9fa54e8c8ff8fa38c98f8, type: 3}
+  weaponUIPatronDisplay: {fileID: 7621280895315440346, guid: d19b86ebf42cfd04984a1ff9f8721ab0, type: 3}
