@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e97373ce8d7492428014ab147d5f42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightSource: {fileID: 8468475232647481175}
   removingTime: 10
   myAnimator: {fileID: 8468475232868679964}
 --- !u!1 &8468475233862115490
