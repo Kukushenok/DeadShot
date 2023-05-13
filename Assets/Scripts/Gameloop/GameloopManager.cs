@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
 public class GameloopManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class GameloopManager : MonoBehaviour
     public int passedLevelCount { get; private set; }
 
     public int maxLevelScore { get { return (passedLevelCount + 1) * 1; } }
+    private int currentMapIndex;
     [SerializeField] private Character character;
     [SerializeField] private List<GameObject> allMaps;
     [SerializeField] private CameraLurker lurkingCamera;
@@ -49,10 +51,23 @@ public class GameloopManager : MonoBehaviour
         Debug.Log("sample");
         passedLevelCount++;
         OnScoreChange.Invoke(currentScore);
-        Time.timeScale = 0;
+        UITransition.MakeTransition(TransferToNextLevel);
     }
-    private IEnumerator Transition(MidTransitionEvent toCall)
+    public IEnumerator TransferToNextLevel(UITransition.TransitionState state)
     {
-        yield return new WaitForSeconds(10);
+        if (state == UITransition.TransitionState.Start)
+        {
+            Time.timeScale = 0;
+        }
+        else if (state == UITransition.TransitionState.End)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            int nextMapIndex = currentMapIndex + Random.Range(1, allMaps.Count);
+            LoadLevel(nextMapIndex % allMaps.Count);
+            yield return new WaitForSecondsRealtime(1);
+        }
     }
 }

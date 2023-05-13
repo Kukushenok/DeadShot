@@ -24,5 +24,7 @@ public class TransferPortal : MonoBehaviour
         Character character = collision.gameObject.GetComponent<Character>();
         if (character == null) return;
         GameloopManager.singleton.NextLevel();
+        animator.SetBool(ENABLED_ANIM_VAR, false);
+        enabled = false;
     }
 }
