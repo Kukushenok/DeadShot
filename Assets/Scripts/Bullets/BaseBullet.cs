@@ -26,7 +26,7 @@ public class BaseBullet : MonoBehaviour
         }
         if (collision.gameObject != owner.gameObject)
         {
-            Health.Damage(collision.gameObject, baseDamage);
+            Health.Damage(collision.gameObject, baseDamage, transform);
             InertiaMovementController.Punch(collision.gameObject, transform.right * punchForce);
             Destroy(gameObject);
         }

@@ -8,15 +8,15 @@ public class GhostEnemyWeaponController : WeaponController
     [SerializeField] private Vector2 shootDelayMinMax;
     [SerializeField] private float minShootRange;
     private bool canShootAgain = true;
-    private Coroutine shootingCoroutine;
     public void SpotTarget(Vector3 position)
     {
         if ((transform.position - position).magnitude < minShootRange)
         {
+            
             if (canShootAgain)
             {
-                canShootAgain = false;
                 StartCoroutine(ShootingCoroutine());
+                canShootAgain = false;
             }
         }
         PointWeaponAtPoint(position);

@@ -683,6 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameloopManager: {fileID: 590756363}
   ghostEnemyPrefab: {fileID: 1156844793825999358, guid: 761380604325eab47a3437526ea51fc1, type: 3}
+  ghostEnemyWithWeaponPrefab: {fileID: 0}
   spawnParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
   maxGhostEnemiesCount: 4
 --- !u!114 &590756363
@@ -1192,6 +1193,7 @@ GameObject:
   - component: {fileID: 1542399604}
   - component: {fileID: 1542399606}
   - component: {fileID: 1542399607}
+  - component: {fileID: 1542399608}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1380,6 +1382,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1fee3918bd5f847910aee8880afec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1542399608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542399598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16fa79f8a987be4c9c6751651607479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 8569143891247761170, guid: 5008a6aa62d939b4e8d41e7197813ab6, type: 3}
 --- !u!1 &1627995472
 GameObject:
   m_ObjectHideFlags: 0

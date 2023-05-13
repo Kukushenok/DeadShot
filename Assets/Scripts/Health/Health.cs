@@ -17,7 +17,11 @@ public class Health : MonoBehaviour
     {
         ChangeHP(victim, -damage);
     }
-
+    public static void Damage(GameObject victim, float damage, DamagePoint damageEffectPos)
+    {
+        DamageEffectMaker.CreateDamageEffect(victim, damage, damageEffectPos);
+        ChangeHP(victim, -damage);
+    }
     public static void ChangeHP(GameObject victim, float delta)
     {
         Health healthComponent = victim.GetComponent<Health>();

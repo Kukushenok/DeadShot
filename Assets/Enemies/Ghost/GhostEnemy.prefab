@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2618935499509692170}
   - component: {fileID: 88340078395064024}
   - component: {fileID: 8790447982037141629}
+  - component: {fileID: 1401872089775611318}
   m_Layer: 0
   m_Name: GhostEnemy
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1fee3918bd5f847910aee8880afec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1401872089775611318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618935499509692174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16fa79f8a987be4c9c6751651607479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 8385961454172777888, guid: 8aaed1849475be64b97f21c272c0317d, type: 3}
 --- !u!1 &2618935501402913669
 GameObject:
   m_ObjectHideFlags: 0
