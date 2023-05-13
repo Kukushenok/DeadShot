@@ -5,8 +5,10 @@ using UnityEngine;
 public class TeamManager : MonoBehaviour
 {
     public static TeamManager singleton;
-    public Team playerTeam;
-    public Team enemyTeam;
+    public Team playerTeam { get => _playerTeam; }
+    public Team enemyTeam { get => _enemyTeam; }
+    [SerializeField] private Team _playerTeam;
+    [SerializeField] private Team _enemyTeam;
     public void Start()
     {
         if (singleton == null) singleton = this;

@@ -9,7 +9,7 @@ public class GameloopManager : MonoBehaviour
     [SerializeField] private List<GameObject> allMaps;
     [SerializeField] private CameraLurker lurkingCamera;
     [SerializeField] private LevelEnemySpawner enemySpawner;
-    [SerializeField] private LevelInstance currentLevelInstance;
+    public LevelInstance currentLevelInstance { get; private set; }
     public void Start()
     {
         passedLevelCount = 0;

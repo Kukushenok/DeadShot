@@ -9,19 +9,19 @@ public class LampEnemy : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private Animator animator;
     private bool damagedBefore = false;
-    public void EnableMyself()
+    public void SetEnable(bool enable)
     {
-        animator.Play("enabled");
+        animator.SetBool("enabled", enable);
+        enabled = enable;
     }
     public void LateUpdate()
     {
         if (animationDamageTrigger && !damagedBefore)
         {
-            if (Character.singleton == null) return;
-            Vector3 delta = Character.singleton.transform.position - damagePoint.position;
-            if (delta.magnitude < damageRadius)
+            TeamParticipant damagedPlayer = TeamManager.GetPlayer(damagePoint.position, damageRadius);
+            if (damagedPlayer != null)
             {
-                Health.Damage(Character.singleton.gameObject, damage);
+                Health.Damage(damagedPlayer.gameObject, damage);
                 damagedBefore = true;
             }
         }
