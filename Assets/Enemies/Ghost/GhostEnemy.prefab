@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2618935499509692277}
   - component: {fileID: 2618935499509692170}
   - component: {fileID: 88340078395064024}
+  - component: {fileID: 3026020620203783128}
+  - component: {fileID: 8790447982037141629}
   m_Layer: 0
   m_Name: GhostEnemy
   m_TagString: Untagged
@@ -59,6 +61,7 @@ MonoBehaviour:
   baseDamage: 1
   punchForce: 8
   minOpacity: 128
+  maxSeeingRange: 15
   spriteRenderer: {fileID: 2618935501402913671}
 --- !u!50 &2618935499509692171
 Rigidbody2D:
@@ -75,7 +78,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -145,6 +148,30 @@ MonoBehaviour:
         m_CallState: 2
   _HP: 3
   _maxHP: 3
+--- !u!114 &3026020620203783128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618935499509692174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1fee3918bd5f847910aee8880afec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8790447982037141629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618935499509692174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1fee3918bd5f847910aee8880afec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2618935501402913669
 GameObject:
   m_ObjectHideFlags: 0

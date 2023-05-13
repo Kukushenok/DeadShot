@@ -12,6 +12,7 @@ public class LevelEnemySpawner : MonoBehaviour
     public void SetLevel(LevelInstance inst)
     {
         inst.StartCoroutine(LevelSpawnCoroutine());
+        currentLevelInstance = inst;
     }
     public IEnumerator LevelSpawnCoroutine()
     {

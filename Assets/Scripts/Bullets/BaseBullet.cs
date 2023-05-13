@@ -8,6 +8,7 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] private GameObject owner;
     [SerializeField] private float baseDamage;
     [SerializeField] private float punchForce;
+    [SerializeField] private bool friendlyFire;
     private void Awake()
     {
         Destroy(gameObject, lifetime);
@@ -19,6 +20,10 @@ public class BaseBullet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.isTrigger) return;
+        if (!friendlyFire)
+        {
+            if (TeamManager.IsInTheSameTeam(collision.gameObject, owner)) return;
+        }
         if (collision.gameObject != owner.gameObject)
         {
             Health.Damage(collision.gameObject, baseDamage);

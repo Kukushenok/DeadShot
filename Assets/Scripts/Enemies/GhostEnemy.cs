@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(TeamParticipant))]
 public class GhostEnemy : InertiaMovementController
 {
     [SerializeField] private GameObject deathParticles;
@@ -10,20 +11,25 @@ public class GhostEnemy : InertiaMovementController
     [SerializeField] private float baseDamage;
     [SerializeField] private float punchForce;
     [SerializeField] private float minOpacity;
+    [SerializeField] private float maxSeeingRange = 5;
      
     [SerializeField] private SpriteRenderer spriteRenderer;
     Vector3 enemyPosition { get
         {
-            if (Character.singleton == null) return transform.position;
-            return Character.singleton.transform.position;
+            TeamParticipant player = TeamManager.GetPlayer(transform.position, maxSeeingRange);
+            if (!player) return transform.position;
+            return player.transform.position;
         }
     }
     private Health healthComponent;
+    private TeamParticipant teamParticipant;
     protected override void Awake()
     {
         base.Awake();
         healthComponent = GetComponent<Health>();
         healthComponent.OnHPChanged.AddListener(OnChangeHP);
+        teamParticipant = GetComponent<TeamParticipant>();
+        TeamManager.singleton.enemyTeam.AssignToTeam(teamParticipant);
     }
     private void FixedUpdate()
     {
