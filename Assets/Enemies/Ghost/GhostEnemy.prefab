@@ -143,8 +143,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _HP: 5
-  _maxHP: 5
+  _HP: 3
+  _maxHP: 3
 --- !u!1 &2618935501402913669
 GameObject:
   m_ObjectHideFlags: 0

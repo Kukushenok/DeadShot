@@ -17,6 +17,10 @@ public class CameraLurker : MonoBehaviour
     private Camera cam;
     private Vector2 velocityChange;
     [SerializeField] private Transform fitInRect;
+    public void SetFittingRect(Transform rect)
+    {
+        fitInRect = rect;
+    }
     private void Start()
     {
         cam = GetComponent<Camera>();

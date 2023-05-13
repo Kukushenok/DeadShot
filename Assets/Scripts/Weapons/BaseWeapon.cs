@@ -63,7 +63,11 @@ public class BaseWeapon: AbstractWeapon
     }
     public override void Reload()
     {
-        StartCoroutine(ReloadCoroutine());
+        if (currentState == WeaponState.Idle)
+        {
+            currentState = WeaponState.Reloading;
+            StartCoroutine(ReloadCoroutine());
+        }
     }
     public override void Initialize(CharacterWeaponController character)
     {
@@ -85,7 +89,7 @@ public class BaseWeapon: AbstractWeapon
         while (bulletCount > 0)
         {
             if (currentState != WeaponState.Shooting) break;
-            weaponAnimator.Play(SHOOT_ANIM_KEY, -1);
+            weaponAnimator.Play(SHOOT_ANIM_KEY);
             for (int j = 0; j < shotBulletCount; j++)
             {
                 ShootOneBullet();
@@ -103,15 +107,14 @@ public class BaseWeapon: AbstractWeapon
     }
     IEnumerator ReloadCoroutine()
     {
-        if (currentState == WeaponState.Idle)
-        {
-            currentState = WeaponState.Reloading;
-            weaponAnimator.Play(RELOAD_ANIM_KEY, -1);
-            yield return new WaitForSeconds(reloadAllBulletsTime);
-            bulletCount = maxBulletCount;
-            owner.UpdateUI();
-            currentState = WeaponState.Idle;
-        }
+
+
+        weaponAnimator.Play(RELOAD_ANIM_KEY);
+        yield return new WaitForSeconds(reloadAllBulletsTime);
+        bulletCount = maxBulletCount;
+        owner.UpdateUI();
+        currentState = WeaponState.Idle;
+        
     }
     
 }

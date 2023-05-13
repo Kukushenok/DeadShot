@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class GameloopManager : MonoBehaviour
 {
+    public int passedLevelCount { get; private set; }
     [SerializeField] private Character character;
     [SerializeField] private List<GameObject> allMaps;
     [SerializeField] private CameraLurker lurkingCamera;
-    void Start()
+    [SerializeField] private LevelEnemySpawner enemySpawner;
+    [SerializeField] private LevelInstance currentLevelInstance;
+    public void Start()
     {
-        
+        passedLevelCount = 0;
+        LoadLevel(0);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void LoadLevel(int levelIdx)
     {
-        
+        if (currentLevelInstance != null)
+        {
+            currentLevelInstance.Unload();
+        }
+        LevelInstance inst = Instantiate(allMaps[levelIdx]).GetComponent<LevelInstance>();
+        enemySpawner.SetLevel(inst);
+        lurkingCamera.SetFittingRect(inst.cameraRectEnclosure);
+        currentLevelInstance = inst;
     }
+    
 }
