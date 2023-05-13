@@ -20,11 +20,9 @@ public class DonutInstance : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Character.singleton == null) return;
-        if (Character.singleton.gameObject == collision.gameObject)
-        {
-            Character.singleton.score++;
-            Destroy(gameObject);
-        }
+        Character character = collision.gameObject.GetComponent<Character>();
+        if (character == null) return;
+        GameloopManager.singleton.AddOneScore();
+        Destroy(gameObject);
     }
 }

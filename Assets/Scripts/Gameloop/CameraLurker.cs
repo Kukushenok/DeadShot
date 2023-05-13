@@ -8,10 +8,11 @@ public class CameraLurker : MonoBehaviour
     {
         get
         {
-            if (Character.singleton == null) return Vector2.zero;
-            return Character.singleton.transform.position;
+            if (toLurk == null) return Vector2.zero;
+            return toLurk.position;
         }
     }
+    [SerializeField] private Transform toLurk;
     [SerializeField] private float zPoisition;
     [SerializeField] private float inertia;
     private Camera cam;

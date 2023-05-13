@@ -16,10 +16,10 @@ namespace Game.UI
         }
         public void UpdateUI()
         {
-            if (Character.singleton == null) return;
-            WeaponDescription weaponDescription = Character.singleton.weaponController.currentWeaponObject;
+            if (GameloopManager.mainCharacter == null) return;
+            WeaponDescription weaponDescription = GameloopManager.mainCharacter.weaponController.currentWeaponObject;
             if (weaponDescription == null) return;
-            AbstractWeapon weapon = Character.singleton.weaponController.currentWeaponInstance;
+            AbstractWeapon weapon = GameloopManager.mainCharacter.weaponController.currentWeaponInstance;
             if (weapon is BaseWeapon)
             {
                 BaseWeapon displaying = (BaseWeapon)weapon;

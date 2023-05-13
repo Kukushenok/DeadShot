@@ -7,7 +7,7 @@ public class GhostEnemy : InertiaMovementController
 {
     [SerializeField] protected GameObject deathParticlesPrefab;
     [SerializeField] protected GameObject donutPrefab;
-    [SerializeField] protected float donutDropPercentrage;
+    [SerializeField] [Range(0, 1)] protected float donutDropPercentrage;
     [SerializeField] protected float baseDamage;
     [SerializeField] protected float punchForce;
     [SerializeField] protected float minOpacity;
@@ -59,7 +59,7 @@ public class GhostEnemy : InertiaMovementController
     public void OnDeath()
     {
         Destroy(gameObject);
-        if (Random.Range(0, 1) <= donutDropPercentrage)
+        if (Random.Range(0.0f, 1.0f) <= donutDropPercentrage)
         {
             Instantiate(donutPrefab, transform.position, Quaternion.identity);
         }
