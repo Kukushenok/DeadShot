@@ -19,6 +19,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneLoadTransitions.LoadScene(SceneLoadTransitions.SCENE_GAMEPLAY);
     }
+    public void OnCloseButtonPressed()
+    {
+        Application.Quit();
+    }
     public static void SubmitScore(int score)
     {
         previousScore = score;

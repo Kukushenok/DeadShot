@@ -973,11 +973,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1542399605}
   allMaps:
-  - {fileID: 5654556388597230952, guid: a4996be9be9b087498761394d671e416, type: 3}
   - {fileID: 7047504027784612344, guid: e8b6b8d0d0aed174391f614053c7ae15, type: 3}
   - {fileID: 9048299170066779662, guid: 172ef1b54ddbf8144a1427578a8c9c8b, type: 3}
   - {fileID: 4873520619152115484, guid: 94b00fe584c09a84eab67cace44870e3, type: 3}
   - {fileID: 6493384549140168562, guid: 158b1c4c96eb14848b3d7b76b2192e54, type: 3}
+  - {fileID: 5654556388597230952, guid: a4996be9be9b087498761394d671e416, type: 3}
   lurkingCamera: {fileID: 519420030}
   enemySpawner: {fileID: 590756362}
   mainMenuSceneIdx: 0
