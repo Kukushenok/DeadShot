@@ -4,9 +4,23 @@ using UnityEngine;
 using TMPro;
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private UIScoreDisplay scoreDisplay;
+    private static int previousScore;
+    [SerializeField] private GameObject scoreLabelParent;
+    [SerializeField] private TextMeshProUGUI scoreLabelText;
+    private void Awake()
+    {
+        if (previousScore > 0)
+        {
+            scoreLabelParent.gameObject.SetActive(true);
+            scoreLabelText.text = previousScore.ToString();
+        }
+    }
     public void OnPlayButtonPressed()
     {
         SceneLoadTransitions.LoadScene(SceneLoadTransitions.SCENE_GAMEPLAY);
+    }
+    public static void SubmitScore(int score)
+    {
+        previousScore = score;
     }
 }

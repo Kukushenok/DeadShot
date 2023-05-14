@@ -74,5 +74,6 @@ public class GameloopManager : MonoBehaviour
     public void OnCharacterDeath()
     {
         SceneLoadTransitions.LoadScene(SceneLoadTransitions.SCENE_MAINMENU);
+        MainMenu.SubmitScore(currentScore);
     }
 }

@@ -52,7 +52,7 @@ public class LevelEnemySpawner : MonoBehaviour
     public void EnableSomeLamps(LevelInstance inst)
     {
         List<LampEnemy> lamps = new List<LampEnemy>(inst.lamps);
-        int lampCount = 6; // gameloopManager.passedLevelCount/2 - 2;
+        int lampCount = gameloopManager.passedLevelCount/2 - 2;
         if (lampCount <= 0) return;
         for (int i = 0; i < lampCount; i++)
         {
@@ -92,7 +92,6 @@ public class LevelEnemySpawner : MonoBehaviour
         GameObject enemyInstance = Instantiate(selectedEnemyPrefab, position, Quaternion.identity);
         currentLevelInstance.AddObjectToLevel(enemyInstance);
         Health hp = enemyInstance.GetComponent<Health>();
-        Debug.Log(hp);
         if (hp != null) hp.ChangeMaxHPProportionally(enemyMaxHP);
     }
 }
