@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITransition : MonoBehaviour
+public class TransitionManager : MonoBehaviour
 {
     private const string START_ANIM_KEY = "start";
     private const string END_ANIM_KEY = "end";
-    public static UITransition singleton { get; private set; }
+    public static TransitionManager singleton { get; private set; }
     public enum TransitionState {Start, Middle, End};
     public delegate IEnumerator TransitionCallback(TransitionState state);
     [SerializeField] private float transitionTime;

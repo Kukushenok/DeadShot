@@ -879,6 +879,7 @@ MonoBehaviour:
   - {fileID: 4873520619152115484, guid: 94b00fe584c09a84eab67cace44870e3, type: 3}
   lurkingCamera: {fileID: 519420030}
   enemySpawner: {fileID: 590756362}
+  mainMenuSceneIdx: 0
 --- !u!4 &590756364
 Transform:
   m_ObjectHideFlags: 0
@@ -1819,7 +1820,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1542399605}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _HP: 10
   _maxHP: 10
 --- !u!114 &1542399607

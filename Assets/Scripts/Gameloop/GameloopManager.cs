@@ -18,6 +18,7 @@ public class GameloopManager : MonoBehaviour
     [SerializeField] private List<GameObject> allMaps;
     [SerializeField] private CameraLurker lurkingCamera;
     [SerializeField] private LevelEnemySpawner enemySpawner;
+    [SerializeField] private int mainMenuSceneIdx;
     public LevelInstance currentLevelInstance { get; private set; }
     private void Awake()
     {
@@ -49,18 +50,17 @@ public class GameloopManager : MonoBehaviour
     }
     public void NextLevel()
     {
-        Debug.Log("sample");
         passedLevelCount++;
         OnScoreChange.Invoke(currentScore);
-        UITransition.MakeTransition(TransferToNextLevel);
+        TransitionManager.MakeTransition(TransferToNextLevel);
     }
-    public IEnumerator TransferToNextLevel(UITransition.TransitionState state)
+    public IEnumerator TransferToNextLevel(TransitionManager.TransitionState state)
     {
-        if (state == UITransition.TransitionState.Start)
+        if (state == TransitionManager.TransitionState.Start)
         {
             Time.timeScale = 0;
         }
-        else if (state == UITransition.TransitionState.End)
+        else if (state == TransitionManager.TransitionState.End)
         {
             Time.timeScale = 1;
         }
@@ -70,5 +70,9 @@ public class GameloopManager : MonoBehaviour
             LoadLevel(nextMapIndex % allMaps.Count);
             yield return new WaitForSecondsRealtime(1);
         }
+    }
+    public void OnCharacterDeath()
+    {
+        SceneLoadTransitions.LoadScene(SceneLoadTransitions.SCENE_MAINMENU);
     }
 }

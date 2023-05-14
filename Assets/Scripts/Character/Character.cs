@@ -11,12 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] private CharacterMovementController _controller;
     [SerializeField] private CharacterWeaponController _weaponController;
     [SerializeField] private Health _myHP;
-    // Start is called before the first frame update
-    public void Start()
+    public void OnDeath()
     {
-        //if (singleton == null)
-        //{
-        //    singleton = this;
-        //}
+        GameloopManager.singleton.OnCharacterDeath();
     }
 }
