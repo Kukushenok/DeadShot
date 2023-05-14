@@ -225,7 +225,7 @@ MonoBehaviour:
   shootTime: 0.15
   angleScatter: 5
   recoilTime: 0.25
-  bulletSpeedRange: {x: 18, y: 20}
+  bulletSpeedRange: {x: 20, y: 22}
 --- !u!95 &2919579527430226045
 Animator:
   serializedVersion: 3

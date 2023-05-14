@@ -17,13 +17,14 @@ public class WeaponController : MonoBehaviour
         {
             Destroy(currentWeaponInstance.gameObject);
         }
+        currentWeaponObject = weaponToSet;
         if (weaponToSet != null)
         {
             GameObject weaponObject = Instantiate(weaponToSet.weaponPrefab, weaponDisplayTransform);
             currentWeaponInstance = weaponObject.GetComponent<AbstractWeapon>();
             currentWeaponInstance.Initialize(this);
         }
-        currentWeaponObject = weaponToSet;
+        
     }
     public void PointWeaponAtPoint(Vector3 point)
     {

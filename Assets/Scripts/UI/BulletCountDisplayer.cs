@@ -28,7 +28,7 @@ namespace Game.UI
             else
             {
                 Debug.LogError("No UI display for unknown weapon type");
-                Debug.Break();
+                return;
             }
         }
         public void UpdateDisplayForBaseWeapon(BaseWeapon weap, WeaponDescription descr)

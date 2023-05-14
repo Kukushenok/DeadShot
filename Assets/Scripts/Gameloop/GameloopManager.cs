@@ -12,7 +12,7 @@ public class GameloopManager : MonoBehaviour
     public int currentScore { get; private set; }
     public int passedLevelCount { get; private set; }
 
-    public int maxLevelScore { get { return (passedLevelCount + 1) * 5; } }
+    public int maxLevelScore { get { return (passedLevelCount + 1) ; } }
     private int currentMapIndex;
     [SerializeField] private Character character;
     [SerializeField] private List<GameObject> allMaps;
@@ -68,6 +68,7 @@ public class GameloopManager : MonoBehaviour
         {
             int nextMapIndex = currentMapIndex + Random.Range(1, allMaps.Count);
             LoadLevel(nextMapIndex % allMaps.Count);
+            character.myHP.Heal();
             yield return new WaitForSecondsRealtime(1);
         }
     }

@@ -52,12 +52,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999353, guid: 761380604325eab47a3437526ea51fc1, type: 3}
+      propertyPath: characterSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156844793825999353, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: weaponDescription
       value: 
       objectReference: {fileID: 11400000, guid: 8740b39c9b0174549b73554b4da8fda3, type: 2}
     - target: {fileID: 1156844793825999353, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: donutDropPercentrage
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156844793825999357, guid: 761380604325eab47a3437526ea51fc1, type: 3}
+      propertyPath: minShootRange
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999358, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: m_Name

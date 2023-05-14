@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999353, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: characterSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999353, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: weaponDescription
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999357, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: shootHoldMinMax.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1156844793825999358, guid: 761380604325eab47a3437526ea51fc1, type: 3}
       propertyPath: m_Name

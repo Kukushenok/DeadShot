@@ -25,11 +25,21 @@ public class LevelEnemySpawner : MonoBehaviour
             return time;
         }
     }
-    public GameObject GetRandomEnemy()
+    private float enemyMaxHP
     {
-        float wGhost = 1 + Mathf.Pow(gameloopManager.passedLevelCount, 0.5f);
-        float wGhostRevolver = Mathf.Pow(gameloopManager.passedLevelCount, 0.75f) - 5;
-        float wGhostSkelegun = Mathf.Pow(gameloopManager.passedLevelCount, 0.33f);
+        get
+        {
+            float currHealth = 4 + Mathf.Sin(GameloopManager.singleton.passedLevelCount * Mathf.PI / 4) * 2;
+            if (currHealth > 5) currHealth = 5;
+            return currHealth;
+        }
+    }
+
+    public GameObject GetRandomEnemyPrefab()
+    {
+        float wGhost = 3 + Mathf.Pow(2 * gameloopManager.passedLevelCount, 0.5f);
+        float wGhostRevolver = Mathf.Pow(2 * gameloopManager.passedLevelCount, 0.75f) - 6;
+        float wGhostSkelegun = Mathf.Pow(gameloopManager.passedLevelCount, 0.33f) + gameloopManager.passedLevelCount / 4;
         if (wGhostRevolver < 0) wGhostRevolver = 0;
         if (wGhostSkelegun < 0) wGhostSkelegun = 0;
         float sumWeight = Random.Range(0, wGhost + wGhostRevolver + wGhostSkelegun);
@@ -72,7 +82,10 @@ public class LevelEnemySpawner : MonoBehaviour
         {
             InertiaMovementController.Punch(nearestParticipant.gameObject, Random.insideUnitCircle);
         }
-        GameObject selectedEnemy = GetRandomEnemy();
-        gameloopManager.currentLevelInstance.AddObjectToLevel(Instantiate(selectedEnemy, position, Quaternion.identity));
+        GameObject selectedEnemyPrefab = GetRandomEnemyPrefab();
+        GameObject enemyInstance = Instantiate(selectedEnemyPrefab, position, Quaternion.identity);
+        gameloopManager.currentLevelInstance.AddObjectToLevel(enemyInstance);
+        Health hp = enemyInstance.GetComponent<Health>();
+        if (hp != null) hp.ChangeMaxHPProportionally(enemyMaxHP);
     }
 }

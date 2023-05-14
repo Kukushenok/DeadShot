@@ -36,10 +36,16 @@ public class Health : MonoBehaviour
             }
         }
     }
-    public static void Heal(Health hp)
+    public void Heal()
     {
-        hp._HP = hp._maxHP;
-        hp.OnHPChanged.Invoke(hp._HP, hp._maxHP);
+        _HP = _maxHP;
+        OnHPChanged.Invoke(_HP, _maxHP);
     }
-
+    public void ChangeMaxHPProportionally(float newMaxHP)
+    {
+        float scaling = _HP / _maxHP;
+        _maxHP = newMaxHP;
+        _HP = _maxHP * scaling;
+        OnHPChanged.Invoke(_HP, _maxHP);
+    }
 }
