@@ -957,7 +957,8 @@ MonoBehaviour:
   ghostEnemyPrefab: {fileID: 2618935499509692174, guid: 6362c52a55bc6564da2962ca69c3d22f, type: 3}
   ghostEnemyWithRevolverPrefab: {fileID: 5016192078672389386, guid: 995d54881c521ea4880f64608b528225, type: 3}
   ghostEnemyWithSkelegunPrefab: {fileID: 8024746924298471641, guid: be86eb70c91271646b2a4e6c29ab56df, type: 3}
-  spawnParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
+  spawnParticlesPrefab: {fileID: 2456774640519032456, guid: 24215c8cc28ce784cb0d49e7eb52e78f, type: 3}
+  spawnPreparation: 1
 --- !u!114 &590756363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,9 +973,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1542399605}
   allMaps:
+  - {fileID: 5654556388597230952, guid: a4996be9be9b087498761394d671e416, type: 3}
   - {fileID: 7047504027784612344, guid: e8b6b8d0d0aed174391f614053c7ae15, type: 3}
   - {fileID: 9048299170066779662, guid: 172ef1b54ddbf8144a1427578a8c9c8b, type: 3}
   - {fileID: 4873520619152115484, guid: 94b00fe584c09a84eab67cace44870e3, type: 3}
+  - {fileID: 6493384549140168562, guid: 158b1c4c96eb14848b3d7b76b2192e54, type: 3}
   lurkingCamera: {fileID: 519420030}
   enemySpawner: {fileID: 590756362}
   mainMenuSceneIdx: 0

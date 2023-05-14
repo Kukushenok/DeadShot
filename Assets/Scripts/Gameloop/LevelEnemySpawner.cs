@@ -9,11 +9,13 @@ public class LevelEnemySpawner : MonoBehaviour
     [SerializeField] private GameObject ghostEnemyWithRevolverPrefab;
     [SerializeField] private GameObject ghostEnemyWithSkelegunPrefab;
     [SerializeField] private GameObject spawnParticlesPrefab;
+    [SerializeField] private float spawnPreparation;
+    private LevelInstance currentLevelInstance { get { return gameloopManager.currentLevelInstance; } }
     private int maxEnemiesCount
     {
         get
         {
-            return 2 + GameloopManager.singleton.passedLevelCount;
+            return 2 + GameloopManager.singleton.passedLevelCount / 2;
         }
     }
     private float spawnRate
@@ -30,7 +32,6 @@ public class LevelEnemySpawner : MonoBehaviour
         get
         {
             float currHealth = 4 + Mathf.Sin(GameloopManager.singleton.passedLevelCount * Mathf.PI / 4) * 2;
-            if (currHealth > 5) currHealth = 5;
             return currHealth;
         }
     }
@@ -51,7 +52,7 @@ public class LevelEnemySpawner : MonoBehaviour
     public void EnableSomeLamps(LevelInstance inst)
     {
         List<LampEnemy> lamps = new List<LampEnemy>(inst.lamps);
-        int lampCount = gameloopManager.passedLevelCount/2 - 2;
+        int lampCount = 6; // gameloopManager.passedLevelCount/2 - 2;
         if (lampCount <= 0) return;
         for (int i = 0; i < lampCount; i++)
         {
@@ -61,22 +62,27 @@ public class LevelEnemySpawner : MonoBehaviour
             lamps.RemoveAt(randomIndex);
         }
     }
-    public void SetLevel(LevelInstance inst)
+    public void LevelUpdated()
     {
-        inst.StartCoroutine(LevelSpawnCoroutine());
-        EnableSomeLamps(inst);
+        currentLevelInstance.StartCoroutine(LevelSpawnCoroutine());
+        EnableSomeLamps(currentLevelInstance);
     }
     public IEnumerator LevelSpawnCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnRate);
-            SpawnGhost(gameloopManager.currentLevelInstance.randomSpawner.position);
+            if (TeamManager.singleton.enemyTeam.participantsCount < maxEnemiesCount)
+            {
+                IEnumerator spawnCoroutine = SpawnEnemyAtPosCoroutine(currentLevelInstance.randomSpawner.position);
+                currentLevelInstance.StartCoroutine(spawnCoroutine);
+            }
         }
     }
-    public void SpawnGhost(Vector3 position)
+    public IEnumerator SpawnEnemyAtPosCoroutine(Vector3 position)
     {
         Instantiate(spawnParticlesPrefab, position, Quaternion.identity);
+        yield return new WaitForSeconds(spawnPreparation);
         TeamParticipant nearestParticipant = TeamManager.singleton.enemyTeam.GetNearestTeamParticipant(position, 0.5f);
         if (nearestParticipant != null)
         {
@@ -84,8 +90,9 @@ public class LevelEnemySpawner : MonoBehaviour
         }
         GameObject selectedEnemyPrefab = GetRandomEnemyPrefab();
         GameObject enemyInstance = Instantiate(selectedEnemyPrefab, position, Quaternion.identity);
-        gameloopManager.currentLevelInstance.AddObjectToLevel(enemyInstance);
+        currentLevelInstance.AddObjectToLevel(enemyInstance);
         Health hp = enemyInstance.GetComponent<Health>();
+        Debug.Log(hp);
         if (hp != null) hp.ChangeMaxHPProportionally(enemyMaxHP);
     }
 }

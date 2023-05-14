@@ -42,10 +42,10 @@ public class GameloopManager : MonoBehaviour
             currentLevelInstance.Unload();
         }
         LevelInstance inst = Instantiate(allMaps[levelIdx]).GetComponent<LevelInstance>();
-        enemySpawner.SetLevel(inst);
-        lurkingCamera.SetFittingRect(inst.cameraRectEnclosure);
         currentLevelInstance = inst;
         currentMapIndex = levelIdx;
+        enemySpawner.LevelUpdated();
+        lurkingCamera.SetFittingRect(inst.cameraRectEnclosure);
     }
     public void NextLevel()
     {

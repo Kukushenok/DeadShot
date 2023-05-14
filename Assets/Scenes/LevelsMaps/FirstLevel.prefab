@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6121810177506563567}
   - component: {fileID: 6716269626770283405}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: HayStack (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 7047504027784612346}
   - component: {fileID: 7047504027784612345}
   m_Layer: 0
-  m_Name: SampleLevel
+  m_Name: FirstLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6121,7 +6121,7 @@ GameObject:
   - component: {fileID: 2383162154241831773}
   - component: {fileID: 6830078555780156467}
   m_Layer: 0
-  m_Name: Square
+  m_Name: HayStack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
