@@ -36,7 +36,7 @@ public class GhostEnemy : InertiaMovementController
         Vector3 direction = enemyPosition - transform.position;
         MakeInertiaMoveTowards(direction);
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         TeamParticipant participant = collision.gameObject.GetComponent<TeamParticipant>();
         if (participant == null) return;
@@ -48,7 +48,7 @@ public class GhostEnemy : InertiaMovementController
             KnockMeTowards(-direction.normalized * punchForce);
         }
     }
-    public void OnChangeHP(float hp, float maxHP)
+    protected virtual void OnChangeHP(float hp, float maxHP)
     {
         Color currColor = spriteRenderer.color;
         float range = (1 - minOpacity / 255);
@@ -56,7 +56,7 @@ public class GhostEnemy : InertiaMovementController
         currColor.a = minOpacity / 255 + range;
         spriteRenderer.color = currColor;
     }
-    public void OnDeath()
+    protected virtual void OnDeath()
     {
         Destroy(gameObject);
         if (Random.Range(0.0f, 1.0f) <= donutDropPercentrage)

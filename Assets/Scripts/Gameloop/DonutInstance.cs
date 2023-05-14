@@ -26,6 +26,7 @@ public class DonutInstance : MonoBehaviour
         Character character = collision.gameObject.GetComponent<Character>();
         if (character == null) return;
         GameloopManager.singleton.AddOneScore();
+        character.ResetWeapon();
         Destroy(gameObject);
     }
 }

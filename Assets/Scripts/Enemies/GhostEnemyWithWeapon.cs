@@ -21,4 +21,9 @@ public class GhostEnemyWithWeapon : GhostEnemy
             weaponController.SpotTarget(p.transform.position);
         }
     }
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        GameloopManager.mainCharacter.SetWeapon(weaponDescription);
+    }
 }

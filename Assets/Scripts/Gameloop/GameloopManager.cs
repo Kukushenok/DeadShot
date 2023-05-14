@@ -12,7 +12,7 @@ public class GameloopManager : MonoBehaviour
     public int currentScore { get; private set; }
     public int passedLevelCount { get; private set; }
 
-    public int maxLevelScore { get { return (passedLevelCount + 1) * 1; } }
+    public int maxLevelScore { get { return (passedLevelCount + 1) * 5; } }
     private int currentMapIndex;
     [SerializeField] private Character character;
     [SerializeField] private List<GameObject> allMaps;

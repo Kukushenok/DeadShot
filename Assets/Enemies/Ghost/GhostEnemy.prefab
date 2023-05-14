@@ -57,7 +57,7 @@ MonoBehaviour:
   minimumInertia: 0
   deathParticlesPrefab: {fileID: 1054944440181558932, guid: 150ec0e6d37beac4e9adadd2a61da7ce, type: 3}
   donutPrefab: {fileID: 8468475232868679955, guid: 0650d0eb1bcffc84b9a6de53cebe4a01, type: 3}
-  donutDropPercentrage: 1
+  donutDropPercentrage: 0.8
   baseDamage: 1
   punchForce: 8
   minOpacity: 128
@@ -146,8 +146,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _HP: 3
-  _maxHP: 3
+  _HP: 5
+  _maxHP: 5
 --- !u!114 &8790447982037141629
 MonoBehaviour:
   m_ObjectHideFlags: 0
