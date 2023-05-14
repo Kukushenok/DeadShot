@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Events;
 public class GameloopManager : MonoBehaviour
@@ -11,8 +10,8 @@ public class GameloopManager : MonoBehaviour
     public static Character mainCharacter { get { return singleton.character; } }
     public int currentScore { get; private set; }
     public int passedLevelCount { get; private set; }
-
-    public int maxLevelScore { get { return (passedLevelCount + 1) ; } }
+    public static bool isLevelCompleted { get { return singleton.currentScore >= singleton.maxLevelScore; } }
+    public int maxLevelScore { get { return (passedLevelCount + 1) * 5 ; } }
     private int currentMapIndex;
     [SerializeField] private Character character;
     [SerializeField] private List<GameObject> allMaps;
@@ -32,7 +31,7 @@ public class GameloopManager : MonoBehaviour
     }
     public void AddOneScore()
     {
-        if (currentScore >= maxLevelScore) return;
+        if (isLevelCompleted) return;
         currentScore++;
         OnScoreChange.Invoke(currentScore);
     }

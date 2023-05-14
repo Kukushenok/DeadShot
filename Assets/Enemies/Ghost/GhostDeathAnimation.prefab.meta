@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 150ec0e6d37beac4e9adadd2a61da7ce
+labels:
+- Effect
 PrefabImporter:
   externalObjects: {}
   userData: 

@@ -6,13 +6,12 @@ public class DonutInstance : MonoBehaviour
 {
     const float REMOVE_ANIM_TIME = 3;
     const string REMOVE_ANIM_KEY = "removing";
-    [SerializeField] GameObject lightSource;
-    [SerializeField] float removingTime;
-    [SerializeField] Animator myAnimator;
+    [SerializeField] private float removingTime;
+    [SerializeField] private GameObject pickupEffect;
+    [SerializeField] private Animator myAnimator;
     private void Awake()
     {
         Invoke("StartRemoving", removingTime - REMOVE_ANIM_TIME);
-        lightSource.SetActive(GameloopManager.singleton.currentScore < GameloopManager.singleton.maxLevelScore);
         GameloopManager.singleton.currentLevelInstance.AddObjectToLevel(gameObject);
     }
     private void StartRemoving()
@@ -25,6 +24,7 @@ public class DonutInstance : MonoBehaviour
     {
         Character character = collision.gameObject.GetComponent<Character>();
         if (character == null) return;
+        if (!GameloopManager.isLevelCompleted) Instantiate(pickupEffect, transform.position, Quaternion.identity);
         GameloopManager.singleton.AddOneScore();
         character.ResetWeapon();
         Destroy(gameObject);

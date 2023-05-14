@@ -124,7 +124,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8468475232868679967}
   - component: {fileID: 8468475232868679966}
-  - component: {fileID: 8468475232868679965}
   - component: {fileID: 8468475232868679964}
   - component: {fileID: 1537038933188554837}
   m_Layer: 0
@@ -165,22 +164,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
---- !u!58 &8468475232868679965
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8468475232868679955}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.4
 --- !u!95 &8468475232868679964
 Animator:
   serializedVersion: 3
@@ -212,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e97373ce8d7492428014ab147d5f42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightSource: {fileID: 8468475232647481175}
   removingTime: 10
+  pickupEffect: {fileID: 7012994599000653520, guid: 2a0112362a05f5549bbe1b3d724c6f26, type: 3}
   myAnimator: {fileID: 8468475232868679964}
 --- !u!1 &8468475233862115490
 GameObject:

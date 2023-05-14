@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   bulletSpawner: {fileID: 856177385227318886}
-  _maxBulletCount: 30
+  _maxBulletCount: 15
   _bulletCount: 0
   bulletPrefab: {fileID: 4068394398025951828, guid: be9b1ff9025509246aa8daeed40c4b00, type: 3}
   weaponAnimator: {fileID: 8281960597433540157}

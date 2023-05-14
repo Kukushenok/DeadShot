@@ -59,9 +59,12 @@ public class GhostEnemy : InertiaMovementController
     protected virtual void OnDeath()
     {
         Destroy(gameObject);
-        if (Random.Range(0.0f, 1.0f) <= donutDropPercentrage)
+        if (!GameloopManager.isLevelCompleted)
         {
-            Instantiate(donutPrefab, transform.position, Quaternion.identity);
+            if (Random.Range(0.0f, 1.0f) <= donutDropPercentrage)
+            {
+                Instantiate(donutPrefab, transform.position, Quaternion.identity);
+            }
         }
         Instantiate(deathParticlesPrefab, transform.position, transform.rotation);
     }

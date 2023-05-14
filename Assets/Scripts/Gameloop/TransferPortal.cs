@@ -7,6 +7,7 @@ public class TransferPortal : MonoBehaviour
 {
     private const string ENABLED_ANIM_VAR = "enabled";
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource transitionAvailableAudio;
     public void Awake()
     {
         GameloopManager.OnScoreChange.AddListener(OnScoreChanged);
@@ -14,9 +15,12 @@ public class TransferPortal : MonoBehaviour
     }
     public void OnScoreChanged(int score)
     {
-        bool shouldBeEnabled = score == GameloopManager.singleton.maxLevelScore;
-        animator.SetBool(ENABLED_ANIM_VAR, shouldBeEnabled);
-        enabled = shouldBeEnabled;
+        animator.SetBool(ENABLED_ANIM_VAR, GameloopManager.isLevelCompleted);
+        if (!enabled && GameloopManager.isLevelCompleted)
+        {
+            transitionAvailableAudio.Play();
+        }
+        enabled = GameloopManager.isLevelCompleted;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
